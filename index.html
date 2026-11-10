@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic AI Projects — TSAI EAG V3 | Pradeep Elavarasan</title>
+  <meta name="description" content="Master index of autonomous multi-agent systems built under The School of AI (TSAI) EAG V3 program — spanning native macOS computer use and multi-layered browser automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Claude / Anthropic Editorial Palette */
+      --bg-canvas: #FAF9F5;
+      --bg-sand: #F3F1E9;
+      --bg-card: #FFFFFF;
+      --bg-pill: #EFECE3;
+      --bg-dark: #141413;
+
+      --text-primary: #141413;
+      --text-secondary: #52514E;
+      --text-muted: #7C7B74;
+      --text-on-dark: #FAF9F5;
+
+      --accent-clay: #D97757;
+      --accent-clay-dark: #C46141;
+      --accent-clay-soft: rgba(217, 119, 87, 0.12);
+
+      --border-hairline: #E5E2D9;
+      --border-strong: #D5D1C5;
+
+      --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+
+      --shadow-soft: 0 2px 12px rgba(20, 20, 19, 0.04);
+      --shadow-elevated: 0 12px 36px rgba(20, 20, 19, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Sticky Top Navigation (Claude Product Bar Style) */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 249, 245, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .nav-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: var(--accent-clay);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .brand-divider {
+      color: var(--border-strong);
+      font-weight: 300;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--bg-pill);
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-on-dark);
+      background: var(--bg-dark);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Editorial Hero Section */
+    .hero {
+      padding: 88px 0 68px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-clay-dark);
+      background: var(--accent-clay-soft);
+      padding: 6px 13px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 26px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-clay);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      max-width: 880px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-clay-dark);
+    }
+
+    .hero-lead {
+      font-size: clamp(17px, 1.8vw, 20px);
+      color: var(--text-secondary);
+      max-width: 720px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    /* Quick Jump Index Cards */
+    .index-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .index-card {
+      background: var(--bg-sand);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .index-card:hover {
+      background: var(--bg-card);
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .index-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .index-card-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-top: 4px;
+    }
+
+    .index-card-desc {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .index-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-clay-dark);
+    }
+
+    /* Project Showcase Sections */
+    .project-section {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+
+    .session-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .session-tag span.pill {
+      background: var(--bg-pill);
+      color: var(--text-primary);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 500;
+    }
+
+    .project-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(36px, 4.5vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 22px;
+      border-radius: var(--radius-pill);
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      border: 1px solid var(--bg-dark);
+    }
+
+    .btn-primary:hover {
+      background: #2b2b29;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-sand);
+      border-color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-youtube-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-clay);
+    }
+
+    /* Project Intro Copy */
+    .project-intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+
+    .project-summary {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .project-summary p + p {
+      margin-top: 16px;
+    }
+
+    .project-summary strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .meta-panel {
+      background: var(--bg-sand);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+    }
+
+    .meta-panel-title {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .meta-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .meta-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .meta-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .meta-list li span.label {
+      color: var(--text-muted);
+    }
+
+    .meta-list li span.val {
+      color: var(--text-primary);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    /* Framed Banner Showcase (Claude Product Visual Frame) */
+    .banner-frame {
+      background: var(--bg-sand);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 44px;
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .banner-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: calc(var(--radius-lg) - 8px);
+      border: 1px solid rgba(20, 20, 19, 0.06);
+    }
+
+    .banner-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 8px 2px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .banner-caption a {
+      color: var(--accent-clay-dark);
+      font-weight: 500;
+    }
+
+    .banner-caption a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sub-sections: Cascade & Demo Cards */
+    .sub-heading {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 30px;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .sub-lead {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+
+    .cascade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+
+    .cascade-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cascade-layer-num {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-clay-dark);
+      font-weight: 500;
+    }
+
+    .cascade-layer-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .cascade-layer-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+
+    .cascade-cost {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      padding-top: 10px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    /* Interactive Demo Scenarios */
+    .demos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .demo-card {
+      background: var(--bg-sand);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .demo-badge {
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+    }
+
+    .demo-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .demo-quote {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      font-style: italic;
+      background: var(--bg-card);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border-left: 2px solid var(--accent-clay);
+    }
+
+    .demo-detail {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 64px 0 80px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .project-header {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .project-intro-grid {
+        grid-template-columns: 1fr;
+      }
+      .demos-grid {
+        grid-template-columns: 1fr;
+      }
+      .brand-sub, .brand-divider {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <a href="#top" class="brand">
+        <div class="brand-mark">A</div>
+        <span class="brand-title">Agentic AI</span>
+        <span class="brand-divider">/</span>
+        <span class="brand-sub">TSAI EAG V3</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#session-10" class="nav-link">Session 10 · Computer Agent</a>
+        <a href="#session-09" class="nav-link">Session 09 · Browser Agent</a>
+        <a href="https://github.com/pradeepelavarasan/Agentic-AI-Projects-TSAI-EAG-V3" target="_blank" rel="noopener" class="nav-cta">
+          Master Repo ↗
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        The School of AI (TSAI) · Engineering Autonomous Agents V3
+      </div>
+      <h1 class="hero-title">
+        Autonomous agents built for the <em>browser</em> and the <em>desktop</em>.
+      </h1>
+      <p class="hero-lead">
+        A master index of multi-agent architectures developed during the TSAI EAG V3 program. Each project pairs a concurrent Directed Acyclic Graph (DAG) orchestrator with cost-aware execution cascades — escalating gracefully from deterministic scripts and accessibility trees to Set-of-Marks visual reasoning.
+      </p>
+
+      <div class="index-strip">
+        <a href="#session-10" class="index-card">
+          <div>
+            <div class="index-card-top">
+              <span>SESSION 10</span>
+              <span>macOS Native GUI</span>
+            </div>
+            <h2 class="index-card-title">Computer Use Agent</h2>
+            <p class="index-card-desc">
+              Drives live macOS desktop applications through a 5-layer cascade backed by AppleScript, OS Accessibility (AX) trees, deterministic hotkeys, and Vision Set-of-Marks.
+            </p>
+          </div>
+          <div class="index-card-footer">
+            <span>Jump to summary ↓</span>
+            <span>·</span>
+            <span>github.com/pradeepelavarasan/computer-use-agent</span>
+          </div>
+        </a>
+
+        <a href="#session-09" class="index-card">
+          <div>
+            <div class="index-card-top">
+              <span>SESSION 09</span>
+              <span>Playwright Web Automation</span>
+            </div>
+            <h2 class="index-card-title">Browser Agent for Shopping</h2>
+            <p class="index-card-desc">
+              Multi-agent e-commerce browser automation and product analysis platform featuring a 4-layer cascade from static HTML extraction to live visual DOM marking.
+            </p>
+          </div>
+          <div class="index-card-footer">
+            <span>Jump to summary ↓</span>
+            <span>·</span>
+            <span>github.com/pradeepelavarasan/Browser-Agent-for-Shopping</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROJECT 1: COMPUTER USE AGENT (SESSION 10)
+         ===================================================================== -->
+    <section id="session-10" class="project-section">
+      <div class="project-header">
+        <div>
+          <div class="session-tag">
+            <span class="pill">Session 10</span>
+            <span>Native macOS Desktop Control</span>
+          </div>
+          <h2 class="project-title">Computer Use Agent</h2>
+        </div>
+        <div class="project-actions">
+          <a href="https://youtu.be/Rfk6_Ecdqrk" target="_blank" rel="noopener" class="btn btn-secondary">
+            <span class="btn-youtube-dot"></span>
+            Watch YouTube Demo
+          </a>
+          <a href="https://github.com/pradeepelavarasan/computer-use-agent" target="_blank" rel="noopener" class="btn btn-primary">
+            View Repository on GitHub ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="project-intro-grid">
+        <div class="project-summary">
+          <p>
+            A multi-agent native desktop automation platform for macOS built to test and demonstrate GUI control techniques — <strong>AppleScript scripting</strong>, <strong>macOS Accessibility tree navigation</strong>, <strong>deterministic hotkeys</strong>, and <strong>vision-based Set-of-Marks interaction</strong> — inside live desktop applications.
+          </p>
+          <p>
+            This project extends the Directed Acyclic Graph (DAG) multi-agent orchestrator from the Browser Agent with a dedicated <strong>Computer</strong> skill node (`Planner → Computer → Critic → Browser (Optional) → Formatter`). Every interactive turn enforces a strict <strong>Scan → Act → Verify</strong> cycle so the agent confirms UI state changes before proceeding.
+          </p>
+        </div>
+
+        <aside class="meta-panel">
+          <div class="meta-panel-title">Project Specifications</div>
+          <ul class="meta-list">
+            <li>
+              <span class="label">Repository</span>
+              <span class="val"><a href="https://github.com/pradeepelavarasan/computer-use-agent" target="_blank" rel="noopener" style="text-decoration: underline;">computer-use-agent ↗</a></span>
+            </li>
+            <li>
+              <span class="label">Orchestration</span>
+              <span class="val">Concurrent DAG (`flow.py`)</span>
+            </li>
+            <li>
+              <span class="label">Execution Substrates</span>
+              <span class="val">AppleScript + `cua-driver` AX</span>
+            </li>
+            <li>
+              <span class="label">Verification Loop</span>
+              <span class="val">Scan → Act → Verify</span>
+            </li>
+            <li>
+              <span class="label">Video Walkthrough</span>
+              <span class="val"><a href="https://youtu.be/Rfk6_Ecdqrk" target="_blank" rel="noopener" style="color: var(--accent-clay-dark);">youtu.be/Rfk6_Ecdqrk ↗</a></span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="banner-frame">
+        <img src="assets/computer-use-banner.png" alt="Computer Use Agent Architecture Banner" loading="lazy" />
+        <div class="banner-caption">
+          <span>Session 10 — Five-Layer macOS Native Desktop Automation Cascade</span>
+          <a href="https://github.com/pradeepelavarasan/computer-use-agent" target="_blank" rel="noopener">Open full README on GitHub ↗</a>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Five-Layer Computer Cascade</h3>
+      <p class="sub-lead">
+        Before any layer runs, a zero-cost AppleScript pre-flight brings the target application to the foreground. The skill then escalates from the fastest read-only check to full visual reasoning.
+      </p>
+
+      <div class="cascade-grid">
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 01</span>
+          <div class="cascade-layer-name">AX Extract (Read-Only)</div>
+          <p class="cascade-layer-desc">
+            Passive read of the macOS Accessibility tree via `cua-driver get_window_state`. Stops immediately if a scan satisfies the goal.
+          </p>
+          <div class="cascade-cost">Cost: Negligible (0 LLM calls)</div>
+        </div>
+
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 02</span>
+          <div class="cascade-layer-name">AppleScript Dictionary</div>
+          <p class="cascade-layer-desc">
+            Generates a targeted AppleScript command speaking directly to scriptable apps' data models (Word, Notes, Mail, Finder, Safari).
+          </p>
+          <div class="cascade-cost">Cost: Low (1 LLM call)</div>
+        </div>
+
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 03</span>
+          <div class="cascade-layer-name">Deterministic Hotkeys</div>
+          <p class="cascade-layer-desc">
+            Executes pre-computed keystroke sequences (`cmd+n`, `Return`, text entry) directly via System Events with Scan-Act-Verify checks.
+          </p>
+          <div class="cascade-cost">Cost: Negligible (0 LLM calls)</div>
+        </div>
+
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 04</span>
+          <div class="cascade-layer-name">AX Tree + Text LLM</div>
+          <p class="cascade-layer-desc">
+            Presents live OS Accessibility elements to a text LLM across up to 12 Scan → Act → Verify turns for standard native macOS apps.
+          </p>
+          <div class="cascade-cost">Cost: Moderate (Text LLM)</div>
+        </div>
+
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 05</span>
+          <div class="cascade-layer-name">Vision Set-of-Marks</div>
+          <p class="cascade-layer-desc">
+            Overlays numbered bounding boxes onto live screenshots for opaque or Electron apps (e.g., Telegram) lacking exposed AX trees.
+          </p>
+          <div class="cascade-cost">Cost: High (Vision LLM)</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Featured Desktop Execution Runs</h3>
+      <p class="sub-lead">
+        Three end-to-end demonstrations documented with full DAG graphs, turn-by-turn screenshots, and token telemetry in the repository.
+      </p>
+
+      <div class="demos-grid">
+        <div class="demo-card">
+          <span class="demo-badge">PATH: APPLESCRIPT (LAYER 2)</span>
+          <div class="demo-title">1. Microsoft Word Document Creation</div>
+          <div class="demo-quote">"Create a new Word document and insert a paragraph about Harry Potter."</div>
+          <p class="demo-detail">
+            Completed in 20.7s (116 tokens in / 75 out). Verified element count transition (`503 → 525`) after direct AppleScript document creation and save.
+          </p>
+        </div>
+
+        <div class="demo-card">
+          <span class="demo-badge">PATH: HOTKEYS (LAYER 3)</span>
+          <div class="demo-title">2. Notes App Recipe Shopping List</div>
+          <div class="demo-quote">"Search online for paneer butter masala ingredients and create a shopping list in Notes."</div>
+          <p class="demo-detail">
+            Combined the `researcher` node with `computer` hotkeys (18 keystrokes injected via System Events) and Critic verification in 39.7s.
+          </p>
+        </div>
+
+        <div class="demo-card">
+          <span class="demo-badge">PATH: VISION SoM (LAYER 5)</span>
+          <div class="demo-title">3. Telegram Contact Search &amp; Message</div>
+          <div class="demo-quote">"Open Telegram, search for Puneeth, and send 'Lets catch this sunday at 6pm'."</div>
+          <p class="demo-detail">
+            Automatically escalated to Vision SoM for Telegram's opaque Electron window; recovered from un-registered bounding-box clicks by switching to keyboard navigation across 9 verified turns.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROJECT 2: BROWSER AGENT FOR SHOPPING (SESSION 09)
+         ===================================================================== -->
+    <section id="session-09" class="project-section">
+      <div class="project-header">
+        <div>
+          <div class="session-tag">
+            <span class="pill">Session 09</span>
+            <span>Multi-Agent Web &amp; E-Commerce Automation</span>
+          </div>
+          <h2 class="project-title">Browser Agent for Shopping</h2>
+        </div>
+        <div class="project-actions">
+          <a href="https://youtu.be/tkbn3P2-srM" target="_blank" rel="noopener" class="btn btn-secondary">
+            <span class="btn-youtube-dot"></span>
+            Watch YouTube Demo
+          </a>
+          <a href="https://github.com/pradeepelavarasan/Browser-Agent-for-Shopping" target="_blank" rel="noopener" class="btn btn-primary">
+            View Repository on GitHub ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="project-intro-grid">
+        <div class="project-summary">
+          <p>
+            A multi-agent e-commerce browser automation and product analysis platform that demonstrates visual control, DOM manipulation, and autonomous decision-making inside a live Playwright browser session.
+          </p>
+          <p>
+            Extending the concurrent DAG orchestrator from <em>Shopping-Agent-V3-with-DAG</em>, this system integrates specialized shopping nodes — <strong>Product Shortlister</strong>, <strong>Product Analyst</strong>, and <strong>Product Recommendation</strong> — alongside the core <strong>Planner</strong>, <strong>Browser</strong>, <strong>Critic</strong>, and <strong>Formatter</strong> agents to search, apply live UI filters, deep-scrape candidates concurrently, and synthesize structured recommendations.
+          </p>
+        </div>
+
+        <aside class="meta-panel">
+          <div class="meta-panel-title">Project Specifications</div>
+          <ul class="meta-list">
+            <li>
+              <span class="label">Repository</span>
+              <span class="val"><a href="https://github.com/pradeepelavarasan/Browser-Agent-for-Shopping" target="_blank" rel="noopener" style="text-decoration: underline;">Browser-Agent-for-Shopping ↗</a></span>
+            </li>
+            <li>
+              <span class="label">Orchestration</span>
+              <span class="val">8-Stage Concurrent Shopping DAG</span>
+            </li>
+            <li>
+              <span class="label">Browser Engine</span>
+              <span class="val">Playwright + Trafilatura + SoM</span>
+            </li>
+            <li>
+              <span class="label">Domain Skills</span>
+              <span class="val">Shortlister · Analyst · Recommender</span>
+            </li>
+            <li>
+              <span class="label">Video Walkthrough</span>
+              <span class="val"><a href="https://youtu.be/tkbn3P2-srM" target="_blank" rel="noopener" style="color: var(--accent-clay-dark);">youtu.be/tkbn3P2-srM ↗</a></span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="banner-frame">
+        <img src="assets/browser-agent-banner.png" alt="Browser Agent for Shopping Architecture Banner" loading="lazy" />
+        <div class="banner-caption">
+          <span>Session 09 — End-to-End DAG Pipeline &amp; Multi-Layered Browser Agent</span>
+          <a href="https://github.com/pradeepelavarasan/Browser-Agent-for-Shopping" target="_blank" rel="noopener">Open full README on GitHub ↗</a>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Four-Layer Browser Automation Cascade</h3>
+      <p class="sub-lead">
+        The Browser Agent dynamically escalates from static HTML extraction to full Set-of-Marks visual reasoning depending on task complexity and page responsiveness.
+      </p>
+
+      <div class="cascade-grid">
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 01</span>
+          <div class="cascade-layer-name">HTML Extraction (Trafilatura)</div>
+          <p class="cascade-layer-desc">
+            Static HTTP GET via `httpx` parsed with `trafilatura`. Ideal for read-only product detail extraction and fast link harvesting.
+          </p>
+          <div class="cascade-cost">Cost: Negligible (0 LLM calls)</div>
+        </div>
+
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 02a</span>
+          <div class="cascade-layer-name">Deterministic Selectors</div>
+          <p class="cascade-layer-desc">
+            Programmatic Playwright selectors supplied by the planner to click or fill known elements without invoking LLM reasoning.
+          </p>
+          <div class="cascade-cost">Cost: Negligible</div>
+        </div>
+
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 02b</span>
+          <div class="cascade-layer-name">Accessibility (A11y) Tree</div>
+          <p class="cascade-layer-desc">
+            Extracts the browser's active Accessibility Tree (`[id]&lt;tag role&gt;name&lt;/tag&gt;`) so a text LLM can drive semantic checkboxes, inputs, and links.
+          </p>
+          <div class="cascade-cost">Cost: Moderate (Text LLM)</div>
+        </div>
+
+        <div class="cascade-card">
+          <span class="cascade-layer-num">Layer 03</span>
+          <div class="cascade-layer-name">Set-of-Marks (SoM) Vision</div>
+          <p class="cascade-layer-desc">
+            Captures a live Playwright screenshot overlaid with numbered interactive bounding boxes and a text legend for complex e-commerce layouts.
+          </p>
+          <div class="cascade-cost">Cost: High (Vision LLM)</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Featured E-Commerce Automation Runs</h3>
+      <p class="sub-lead">
+        Evaluated across three distinct UI filter paradigms on Amazon India, complete with Critic validation and five-dimension product trade-off analysis.
+      </p>
+
+      <div class="demos-grid">
+        <div class="demo-card">
+          <span class="demo-badge">UI PATTERN: CHECKBOX FILTER</span>
+          <div class="demo-title">1. Fossil Women's Watch Delivery Filter</div>
+          <div class="demo-quote">"fossil watch for women. Additional filters: filter by 'Get It Today' or 'Get It by Tomorrow'."</div>
+          <p class="demo-detail">
+            Navigated Amazon India via Set-of-Marks Vision, applied delivery checkboxes, shortlisted top watches, and deep-scraped specifications concurrently.
+          </p>
+        </div>
+
+        <div class="demo-card">
+          <span class="demo-badge">UI PATTERN: DISCOUNT LINK FILTER</span>
+          <div class="demo-title">2. Kids Tricycle Discount Selection</div>
+          <div class="demo-quote">"kids tricycle with parental control handle — apply '25% Off or more' discount filter."</div>
+          <p class="demo-detail">
+            Interactively located and triggered link-based sidebar discount refinements before passing candidate listings through Critic validation.
+          </p>
+        </div>
+
+        <div class="demo-card">
+          <span class="demo-badge">UI PATTERN: DROPDOWN SORT</span>
+          <div class="demo-title">3. Smart Watches Best Sellers Sort</div>
+          <div class="demo-quote">"smart watches — sort results by 'Best Sellers' using the sort dropdown."</div>
+          <p class="demo-detail">
+            Operated dynamic sort dropdown overlays, extracted ranked listings, and synthesized final multi-product recommendations across 5 evaluation dimensions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Agentic AI Projects — TSAI EAG V3</strong> · Built by <a href="https://github.com/pradeepelavarasan" target="_blank" rel="noopener" style="text-decoration: underline;">Pradeep Elavarasan</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/pradeepelavarasan/Agentic-AI-Projects-TSAI-EAG-V3" target="_blank" rel="noopener">Master Index Repo</a>
+        <a href="https://github.com/pradeepelavarasan/computer-use-agent" target="_blank" rel="noopener">Computer Use Agent</a>
+        <a href="https://github.com/pradeepelavarasan/Browser-Agent-for-Shopping" target="_blank" rel="noopener">Browser Agent for Shopping</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
